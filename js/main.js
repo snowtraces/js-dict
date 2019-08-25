@@ -30,7 +30,7 @@ Trie.prototype.search = function (word, caseSensitive) {
         let lowerWord = word.toLowerCase()
         let lowerResult = this.search(lowerWord, true)
         if (lowerResult) return lowerResult
-        
+
         let firstUpperWord = firstUpperCase(word)
         return this.search(firstUpperWord, true)
     }
@@ -55,8 +55,15 @@ Trie.prototype.init = function (data) {
         this.loadDataTrie(trieNodes)
         log('--- 从storage中加载数据 ---')
     } else {
-        this.loadDataJSON(data)
-        log('--- 从js文件中加载数据 ---')
+        let dictJS = document.createElement('script')
+        dictJS.src = './js/dict.js'
+        e('body').appendChild(dictJS)
+
+        dictJS.onload = () => {
+            this.loadDataJSON(window[data])
+            window[data] = null
+            log('--- 从js文件中加载数据 ---')
+        }
     }
 }
 
@@ -140,8 +147,7 @@ function debounce(func, delay) {
 
 // 4. 初始化树
 let trie = new Trie()
-trie.init(dict)
-dict = null
+trie.init('dict')
 
 // 5. 上传词典
 // dragUpload('#dragArea', trie.loadDataTrie, trie)
@@ -175,10 +181,10 @@ wordCh.onkeyup = wordEn.onkeyup = function (e) {
 // 7. 下载词典
 downloadDict.onclick = function () {
     // saveData.setDataConver({ name: '词典.dict', data: JSON.stringify(trie.root) })
-    saveData.setDataConver({ 
-        name: '词典.dict', 
+    saveData.setDataConver({
+        name: '词典.dict',
         data: JSON.stringify(
-            trie.findWord({'': trie.root}, {}, Infinity),
+            trie.findWord({ '': trie.root }, {}, Infinity),
             null,
             2
         )
