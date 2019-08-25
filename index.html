@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <main>
+        <input type="search" id="word">
+
+        <pre id="result"></pre>
+    </main>
+    <aside>
+        <button type="button" id="downloadDict" class="asideBtn">下载词典</button>
+        <button type="button" id="addDict" class="asideBtn">添加单词</button>
+        <div id="wordEditor" class="hide">
+            <div class="formUnit clearfix">
+                <label for="wordEn">英文</label>
+                <input type="text" id="wordEn">
+            </div>
+            <div class="formUnit clearfix">
+                <label for="wordCh">中文</label>
+                <input type="text" id="wordCh">
+            </div>
+        </div>
+        <div id="dragArea">
+            <div class="uploadText">上传词典</div>
+            <div class="uploader"><span>拖拽</span>文件上传</div>
+        </div>
+    </aside>
+    <div id="msg">
+            <div class="msg-content"></div>
+    </div>
+</body>
+<script src="./js/function.js"></script>
+<script src="./js/dragUpload.js"></script>
+<script src="./js/saveData.js"></script>
+<script src="./js/dict.js"></script>
+<script src="./js/main.js"></script>
+
+</html>
