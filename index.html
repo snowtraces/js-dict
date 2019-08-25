@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>英汉词典</title>
+    <link rel="icon" href="./img/favicon.png">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+    <script>
+        if (location.protocol === 'http:' && !location.hostname.match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/)) {
+            location.href = 'https:' + location.href.substring(window.location.protocol.length)
+        }
+    </script>
     <main>
         <input type="search" id="word">
 
@@ -34,7 +40,7 @@
         </div>
     </aside>
     <div id="msg">
-            <div class="msg-content"></div>
+        <div class="msg-content"></div>
     </div>
 </body>
 <script src="./js/function.js"></script>

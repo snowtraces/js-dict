@@ -110,8 +110,8 @@ let searchWithDebounce = debounce(function () {
         if (baseNode) {
             let findResult = trie.findWord({ [baseNode.word]: baseNode }, {})
             result.innerHTML =
-                (baseNode.isW ? `<span class="hint inputWord"><span class="w">${baseNode.word}</span>${baseNode.data}</span>` : '')
-                + Object.keys(findResult).slice(0, 20).map(r => `<span class="hint"><span class="w">${r}</span>${findResult[r]}</span>`).join('')
+                (baseNode.isW ? `<span class="hint inputWord"><span class="w">${baseNode.word}</span> ${baseNode.data}</span>` : '')
+                + Object.keys(findResult).slice(0, 20).map(r => `<span class="hint"><span class="w">${r}</span> ${findResult[r]}</span>`).join('')
         } else {
             if (caseSensitive) {
                 arguments.callee(false)
