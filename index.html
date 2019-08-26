@@ -17,13 +17,19 @@
         }
     </script>
     <main>
-        <input type="search" id="word">
+        <div id="searchPage">
+                <input type="search" id="word">
+                <pre id="result"></pre>
+        </div>
 
-        <pre id="result"></pre>
+        <div id="learnListPage">
+            <div id="learnList"></div>
+        </div>
     </main>
     <aside>
         <button type="button" id="downloadDict" class="asideBtn">下载词典</button>
         <button type="button" id="addDict" class="asideBtn">添加单词</button>
+        <button type="button" id="learnListBtn" class="asideBtn">生词本</button>
         <div id="wordEditor" class="hide">
             <div class="formUnit clearfix">
                 <label for="wordEn">英文</label>

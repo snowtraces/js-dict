@@ -190,3 +190,15 @@ downloadDict.onclick = function () {
         )
     })
 }
+
+// 8. 生词本
+learnListBtn.onclick = function () {
+    let isActive = learnListPage.classList.contains('active')
+    if (isActive) {
+        learnListBtn.classList.remove('active')
+        learnListPage.classList.remove('active')
+    } else {
+        learnListBtn.classList.add('active')
+        learnListPage.classList.add('active')
+    }
+}

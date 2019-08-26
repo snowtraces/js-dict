@@ -3,6 +3,11 @@ body {
     font-size: 13.3333px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+pre {
+    margin: 0;
+}
+
 .clearfix::after {
     content: "";
     display: block;
@@ -26,15 +31,19 @@ button:hover {
 }
 
 main {
-    max-width: 800px;
     margin-left: 180px;
+    position: relative;
+}
+
+main > * {
     padding: 30px 20px;
     height: 100vh;
     box-sizing: border-box;
+    position: absolute;
+    width: 100%;
 }
 
 main #result {
-    margin: 0;
     max-height: calc(100vh - 64px);
     overflow-y: auto;
     box-sizing: border-box;
@@ -42,13 +51,22 @@ main #result {
     white-space: normal;
 }
 
-#word {
+main #word {
     width: 100%;
     max-width: 360px;
     padding: 8px;
     border: 1px solid #444;
     border-radius: 3px;
     color: #444;
+}
+
+main #learnListPage {
+    display: none;
+    background: #2196F3;
+}
+
+main #learnListPage.active {
+    display: block;
 }
 
 .inputWord {
@@ -89,6 +107,10 @@ aside .asideBtn {
 }
 aside .asideBtn:hover {
     background: #eee;
+}
+
+aside .asideBtn.active {
+    background: rgba(72, 188, 255, .3);
 }
 
 aside #dragArea {
