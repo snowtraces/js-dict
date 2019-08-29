@@ -17,6 +17,22 @@ window.Utils = (function(window, Utils){
         )
     }
 
+    const registEventForce = function(selector, event, func) {
+        let eventList = event.split(' ').map(e => e.trim())
+        eventList.forEach(e => {
+            document.addEventListener(e, (_e) => {
+                const _list = eAll(selector)
+                _list.forEach(
+                    item => {
+                        if (_e.target === item) {
+                            func.call(item)
+                        }
+                    }
+                )
+            }, false)
+        })
+    }
+
     /**
      * 首字母大写
      */
@@ -54,7 +70,7 @@ window.Utils = (function(window, Utils){
         setTimeout(function () {
             _msgEL.classList.remove('error-msg')
             _msgEL.classList.remove('active')
-        }, 1200)
+        }, 800)
     }
     const successMsg = function (msg, _msgEL) {
         _msgEL = _msgEL || e('#msg')
@@ -64,7 +80,7 @@ window.Utils = (function(window, Utils){
         setTimeout(function () {
             _msgEL.classList.remove('success-msg')
             _msgEL.classList.remove('active')
-        }, 1200)
+        }, 800)
     }
 
     /**
@@ -113,6 +129,7 @@ window.Utils = (function(window, Utils){
         e: e,
         eAll: eAll,
         registEvent: registEvent,
+        registEventForce: registEventForce,
         firstUpperCase: firstUpperCase,
         copy: copy,
         log: log,
