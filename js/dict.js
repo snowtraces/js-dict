@@ -44382,7 +44382,7 @@ dict = {
     "vie": "v. 争,竞争,争胜",
     "Vienna": "n. 维也纳",
     "Vietnam": "n. 越南",
-    "el": "n. 视野,风景,见解;v. 看,考虑",
+    "view": "n. 视野,风景,见解;v. 看,考虑",
     "viewable": "可视",
     "viewer": "n. 观看者",
     "viewfinder": "n. 反光镜",
