@@ -56,7 +56,7 @@ Trie.prototype.init = function (data) {
         if (data) {
             let dictJS = document.createElement('script')
             dictJS.src = './js/dict.js'
-            e('body').appendChild(dictJS)
+            el('body').appendChild(dictJS)
 
             dictJS.onload = () => {
                 this.loadDataJSON(window[data])

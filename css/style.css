@@ -210,35 +210,3 @@ aside #dragArea .uploader span{
     width: calc(100% - 120px);
     background: #fff;
 }
-
-/* 消息提示 */
-#msg {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 50px;
-    z-index: 999999;
-    width: auto;
-    max-width: 200px;
-    margin: auto;
-    border-radius: 5px;
-    padding: 10px;
-    color: #fff;
-    text-align: center;
-    opacity: .9;
-    display: none;
-    z-index: -1;
-}
-
-#msg.error-msg {
-    background-color: #f00;
-}
-
-#msg.success-msg {
-    background-color: #2196F3;
-}
-
-#msg.active {
-    display: block;
-    z-index: 1;
-}

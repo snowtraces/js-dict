@@ -20,7 +20,7 @@ let searchWithDebounce = debounce(function () {
                 arguments.callee(false)
             } else {
                 result.innerHTML = '无匹配内容'
-            }
+            }dragUpload
         }
     } else {
         result.innerHTML = ''
@@ -47,7 +47,7 @@ trie.init('dict')
 
 // 5. 上传词典
 // dragUpload('#dragArea', trie.loadDataTrie, trie)
-dragUpload('#dragArea', trie.loadDataJSON, trie)
+dragUpload('#dragArea', trie.loadDataJSON.bind(trie))
 
 // 6. 添加词典
 addDict.onclick = function () {
