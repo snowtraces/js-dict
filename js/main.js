@@ -49,31 +49,6 @@ trie.init('dict')
 // dragUpload('#dragArea', trie.loadDataTrie, trie)
 dragUpload('#dragArea', trie.loadDataJSON.bind(trie))
 
-// 6. 添加词典
-addDict.onclick = function () {
-    wordEditor.classList.contains('hide') ? wordEditor.classList = 'show' : wordEditor.classList = 'hide'
-}
-wordCh.onkeyup = wordEn.onkeyup = function (e) {
-    let key = e.key
-    if ("enter" !== key.toLowerCase()) {
-        return
-    }
-    let en = wordEn.value
-    let ch = wordCh.value
-    if (!en || !ch) {
-        errorMsg('请先填写中英文内容', msg)
-    } else {
-        let oldValue = trie.search(en)
-        if (oldValue) {
-            errorMsg('该单次已存在', msg)
-            return
-        }
-        trie.push(en, ch)
-        trie.save2Local()
-        successMsg('添加成功', msg)
-    }
-}
-
 // 7. 下载词典
 downloadDict.onclick = function () {
     // saveData.setDataConver({ name: '词典.dict', data: JSON.stringify(trie.root) })
