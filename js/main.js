@@ -20,7 +20,7 @@ let searchWithDebounce = debounce(function () {
                 arguments.callee(false)
             } else {
                 result.innerHTML = '无匹配内容'
-            }dragUpload
+            }
         }
     } else {
         result.innerHTML = ''
@@ -104,7 +104,7 @@ learnListBtn.onclick = function () {
     }
 }
 // add
-registEventForce('.addNew', 'click', addNew2LearnList)
+bindEventForce('.addNew', 'click', addNew2LearnList)
 function addNew2LearnList() {
     // 获取数据
     let word = this.parentNode.querySelector('.w').textContent
