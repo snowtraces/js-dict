@@ -62,7 +62,7 @@ main #word {
 
 main #learnListPage {
     display: none;
-    background: rgba(33, 149, 243, 0.26);
+    background: #fff;
 }
 
 main #learnListPage.active {
