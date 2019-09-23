@@ -83,17 +83,18 @@ main #learnListPage.active {
     min-width: 50px;
 }
 
-.hint .addNew {
+.hint .learnOpt {
     display: inline-block;
     line-height: 1;
     padding: 0 3px;
+    margin-right: 5px;
     border-radius: 2px;
     background: #2196F3;
     color: #fff;
     cursor: pointer;
     position: relative;
 }
-.hint .addNew:hover::after{
+.hint .learnOpt:hover::after{
     content: "加入生词本";
     width: max-content;
     display: inline-block;
@@ -106,7 +107,12 @@ main #learnListPage.active {
     bottom: 0;
     left: calc(100% + 14px);    
 }
-.hint .addNew:hover::before{
+
+.hint .removeNew:hover::after {
+    content: "移除生词本";
+}
+
+.hint .learnOpt:hover::before{
     content: " ";
     color: rgba(33, 149, 243, 0.85);
     width: max-content;

@@ -2,12 +2,10 @@
     let view = {
         el: '#learnListPage',
         template: `<div id="learnList">
-        <pre>
-        \${
-            Object.keys(data).slice(0, 20).map(r => \`<span class="hint"><span class="w">\${r}</span><span class="removeNew">-</span><span class="t">\${data[r]}</span></span>\`).join('')
+        <pre>\${
+            Object.keys(data).slice(0, 20).map(r => \`<span class="hint"><span class="removeNew learnOpt">-</span><span class="w">\${r}</span><span class="t">\${data[r]}</span></span>\`).join('')
         }
-        </pre>
-        </div>`,
+        </pre></div>`,
         render(data) {
             $.el(this.el).innerHTML = $.evalTemplate(this.template, data)
         },
@@ -52,11 +50,14 @@
             window.eventHub.on('learnListToggle', () => {
                 this.view.pageToggle($.el(this.view.el))
                     .then(() => {
-                        let data = this.model.trie.findWord({ '': this.model.trie.root }, {}, Infinity)
-                        log(data)
-                        this.view.render(data)
+                        this.loadData()
                     })
             })
+        },
+        loadData() {
+            let data = this.model.trie.findWord({ '': this.model.trie.root }, {}, Infinity)
+            log(data)
+            this.view.render(data)
         },
         addNewWord(e) {
             // 获取数据
@@ -65,13 +66,16 @@
 
             // 添加数据
             this.model.trie.push(word, translate)
+            this.model.trie.save2Local()
         },
         removeNewWord(e) {
             // 获取数据
             let word = e.target.parentNode.querySelector('.w').textContent
 
             // 添加数据
-            this.model.trie.push(word, translate)
+            this.model.trie.pull(word)
+            this.model.trie.save2Local()
+            this.loadData()
         }
     }
 

@@ -1,7 +1,7 @@
 {
     let view = {
         el: 'aside',
-        template: `<button type="button" id="downloadDict" class="asideBtn">下载词典</button>
+        template: `<!--<button type="button" id="downloadDict" class="asideBtn">下载词典</button>-->
         <button type="button" id="learnListBtn" class="asideBtn">生词本</button>
         <div id="dragArea">
             <div class="uploadText">上传词典</div>

@@ -53,8 +53,8 @@
                     if (baseNode) {
                         let findResult = this.model.trie.findWord({ [baseNode.word]: baseNode }, {})
                         result.innerHTML =
-                            (baseNode.isW ? `<span class="hint inputWord"><span class="w">${baseNode.word}</span><span class="addNew">+</span><span class=t>${baseNode.data}</span></span>` : '')
-                            + Object.keys(findResult).slice(0, 20).map(r => `<span class="hint"><span class="w">${r}</span><span class="addNew">+</span><span class="t">${findResult[r]}</span></span>`).join('')
+                            (baseNode.isW ? `<span class="hint inputWord"><span class="addNew learnOpt">+</span><span class="w">${baseNode.word}</span><span class=t>${baseNode.data}</span></span>` : '')
+                            + Object.keys(findResult).slice(0, 20).map(r => `<span class="hint"><span class="addNew learnOpt">+</span><span class="w">${r}</span><span class="t">${findResult[r]}</span></span>`).join('')
                             
                     } else {
                         if (caseSensitive) {
