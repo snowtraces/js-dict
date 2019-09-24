@@ -41,6 +41,7 @@ main > * {
     box-sizing: border-box;
     position: absolute;
     width: 100%;
+    overflow: auto;
 }
 
 main #result {

@@ -3,7 +3,7 @@
         el: '#learnListPage',
         template: `<div id="learnList">
         <pre>\${
-            Object.keys(data).slice(0, 20).map(r => \`<span class="hint"><span class="removeNew learnOpt">-</span><span class="w">\${r}</span><span class="t">\${data[r]}</span></span>\`).join('')
+            Object.keys(data).map(r => \`<span class="hint"><span class="removeNew learnOpt">-</span><span class="w">\${r}</span><span class="t">\${data[r]}</span></span>\`).join('')
         }
         </pre></div>`,
         render(data) {
