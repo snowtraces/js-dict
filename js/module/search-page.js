@@ -44,29 +44,30 @@
             })
         },
         doSearch(){
-            $.debounce(() => {
-                let value = word.value
-                let caseSensitive = arguments[0] === undefined ? true : arguments[0]
-                if (value) {
-                    // 从trie树中查找
-                    let baseNode = this.model.trie.search(value, caseSensitive)
-                    if (baseNode) {
-                        let findResult = this.model.trie.findWord({ [baseNode.word]: baseNode }, {})
-                        result.innerHTML =
-                            (baseNode.isW ? `<span class="hint inputWord"><span class="addNew learnOpt">+</span><span class="w">${baseNode.word}</span><span class=t>${baseNode.data}</span></span>` : '')
-                            + Object.keys(findResult).slice(0, 20).map(r => `<span class="hint"><span class="addNew learnOpt">+</span><span class="w">${r}</span><span class="t">${findResult[r]}</span></span>`).join('')
-                            
-                    } else {
-                        if (caseSensitive) {
-                            arguments.callee(false)
-                        } else {
-                            result.innerHTML = '无匹配内容'
-                        }
-                    }
+            $.debounce(this.search.bind(this), 300)()
+        },
+        search() {
+            let value = word.value
+            let caseSensitive = arguments[0] === undefined ? true : arguments[0]
+            if (value) {
+                // 从trie树中查找
+                let baseNode = this.model.trie.search(value, caseSensitive)
+                if (baseNode) {
+                    let findResult = this.model.trie.findWord({ [baseNode.word]: baseNode }, {})
+                    result.innerHTML =
+                        (baseNode.isW ? `<span class="hint inputWord"><span class="addNew learnOpt">+</span><span class="w">${baseNode.word}</span><span class=t>${baseNode.data}</span></span>` : '')
+                        + Object.keys(findResult).slice(0, 20).map(r => `<span class="hint"><span class="addNew learnOpt">+</span><span class="w">${r}</span><span class="t">${findResult[r]}</span></span>`).join('')
+                        
                 } else {
-                    result.innerHTML = ''
+                    if (caseSensitive) {
+                        this.search(false)
+                    } else {
+                        result.innerHTML = '无匹配内容'
+                    }
                 }
-            }, 300)()
+            } else {
+                result.innerHTML = ''
+            }
         }
     }
 
