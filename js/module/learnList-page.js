@@ -29,7 +29,7 @@
         init() {
             this.tireKey = 'new_word_list',
                 this.trie = new Trie(this.tireKey);
-            this.trie.init('dict')
+            this.trie.init()
         }
     }
 
@@ -56,7 +56,6 @@
         },
         loadData() {
             let data = this.model.trie.findWord({ '': this.model.trie.root }, {}, Infinity)
-            log(data)
             this.view.render(data)
         },
         addNewWord(e) {
