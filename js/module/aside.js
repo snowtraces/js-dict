@@ -31,9 +31,7 @@
             this.bindEventHub()
         },
         bindEvents() {
-            dragUpload(this.view.el + ' #dragArea').then((data) => {
-                window.eventHub.emit('dictUploaded', data)
-            })
+            dragUpload(this.view.el + ' #dragArea', (data) => window.eventHub.emit('dictUploaded', data))
             $.bindEvent(this.view.el + ' #downloadDict', 'click', () => {
                 window.eventHub.emit('dictDownload')
             })
