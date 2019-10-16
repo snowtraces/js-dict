@@ -71,7 +71,7 @@
             // 获取数据
             let word = e.target.parentNode.querySelector('.w').textContent
 
-            // 添加数据
+            // 删除数据
             this.model.trie.pull(word)
             this.model.trie.save2Local()
             this.loadData()
