@@ -45555,6 +45555,7 @@ dict = {
     "wordy": "a. 文字的，口头的，多言的",
     "wore": "v. 穿著，耐用，耗损",
     "work": "n. 工作，劳动，职业;v. 工作",
+    "workaround": "n. 解决方法",
     "work-shop": "n. 车间(干重活的地方)",
     "workability": "n. 可使用性",
     "workable": "a. 可行的，起作用的",
