@@ -163,6 +163,7 @@ aside #dragArea {
     height: 80px;
     border-radius: 5px;
     letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
 aside #dragArea .uploadText {

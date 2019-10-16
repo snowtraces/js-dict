@@ -1,12 +1,12 @@
 {
     let view = {
         el: 'aside',
-        template: `<!--<button type="button" id="downloadDict" class="asideBtn">下载词典</button>-->
-        <button type="button" id="learnListBtn" class="asideBtn">生词本</button>
+        template: `<button type="button" id="learnListBtn" class="asideBtn">生词本</button>
         <div id="dragArea">
-            <div class="uploadText">上传词典</div>
+            <div class="uploadText">生词本</div>
             <div class="uploader"><span>拖拽</span>文件上传</div>
-        </div>`,
+        </div>
+        <button type="button" id="downloadDict" class="asideBtn">下载生词本</button>`,
         render(data) {
             $.el(this.el).innerHTML = $.evalTemplate(this.template, data)
         },

@@ -12,8 +12,8 @@
         tireKey: null,
         trie: null,
         init(){
-            this.tireKey = 'trie_nodes',
-            this.trie = new Trie(this.tireKey);
+            this.tireKey = 'trie_nodes'
+            this.trie = new Trie(this.tireKey)
             this.trie.init('dict')
         }
     }
@@ -31,17 +31,7 @@
             $.bindEvent(this.view.el + ' #word', 'keyup', this.doSearch.bind(this))
         },
         bindEventHub() {
-            window.eventHub.on('dictUploaded', this.model.trie.loadDataJSON.bind(this.model.trie))
-            window.eventHub.on('dictDownload', () => {
-                saveData.setDataConver({
-                    name: '词典.dict',
-                    data: JSON.stringify(
-                        this.model.trie.findWord({ '': this.model.trie.root }, {}, Infinity),
-                        null,
-                        2
-                    )
-                })
-            })
+      
         },
         doSearch(){
             $.debounce(this.search.bind(this), 300)()

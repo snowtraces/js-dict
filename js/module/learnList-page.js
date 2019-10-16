@@ -27,8 +27,8 @@
         tireKey: null,
         trie: null,
         init() {
-            this.tireKey = 'new_word_list',
-                this.trie = new Trie(this.tireKey);
+            this.tireKey = 'new_word_list'
+            this.trie = new Trie(this.tireKey)
             this.trie.init()
         }
     }
@@ -52,6 +52,17 @@
                     .then(() => {
                         this.loadData()
                     })
+            })
+            window.eventHub.on('dictUploaded', this.model.trie.loadDataJSON.bind(this.model.trie))
+            window.eventHub.on('dictDownload', () => {
+                saveData.setDataConver({
+                    name: `生词本_${new Date().toISOString()}.json`,
+                    data: JSON.stringify(
+                        this.model.trie.findWord({ '': this.model.trie.root }, {}, Infinity),
+                        null,
+                        2
+                    )
+                })
             })
         },
         loadData() {
