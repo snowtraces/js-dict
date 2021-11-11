@@ -63,7 +63,7 @@
 
                 if (Object.keys(dataResult).length) {
                     result.innerHTML = Object.keys(dataResult).slice(0, MAX_LEN).map(r =>
-                        `<div class="hint"><span class="addNew learnOpt">+</span><span class="w"><span class="match">${r.substring(0, value.length)}</span><span class="match-tail">${r.substring(value.length)}</span></span> <span class="t">${dataResult[r]}</span></span>`)
+                        `<div class="hint"><span class="addNew learnOpt">+</span><span class="w"><span class="match">${r.substring(0, value.length)}</span><span class="match-tail">${r.substring(value.length)}</span></span> <span class="t">${dataResult[r]}</span></span></div>`).join('\n')
                 } else {
                     if (caseSensitive) {
                         this.search(false)
