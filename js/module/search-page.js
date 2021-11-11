@@ -37,29 +37,33 @@
             $.debounce(this.search.bind(this), 500)()
         },
         search() {
+            let MAX_LEN = 20
             let value = word.value
             let caseSensitive = arguments[0] === undefined ? true : arguments[0]
             if (value) {
                 // 从trie树中查找
-                let domArray = []
+                let dataResult = {}
+
+                // 全匹配
                 let baseNodeList = this.model.trie.search(value, caseSensitive)
-                baseNodeList.forEach(baseNode => {
-                    if (domArray.length < 20) {
+                baseNodeList.filter(n => n._w).forEach(n => {
+                    dataResult[n.word] = n._d
+                })
 
-
-                        let findResult = this.model.trie.findWord({ [baseNode.word]: baseNode }, {})
-                        if (baseNode.isW) {
-                            domArray.push(`<div class="hint"><span class="addNew learnOpt">+</span><span class="w match-in">${baseNode.word}</span> <span class=t>${baseNode.data}</span></div>`)
+                // 头匹配
+                if (Object.keys(dataResult).length < MAX_LEN) {
+                    baseNodeList.forEach(baseNode => {
+                        if (Object.keys(dataResult).length < MAX_LEN) {
+                            let findResult = this.model.trie.findWord({ [baseNode.word]: baseNode }, {}, MAX_LEN)
+                            dataResult = { ...dataResult, ...findResult }
                         }
+                    });
 
-                        domArray = [...domArray, ...(
-                            Object.keys(findResult).slice(0, 20)
-                                .map(r => `<div class="hint"><span class="addNew learnOpt">+</span><span class="w"><span class="match">${r.substring(0, baseNode.word.length)}</span><span class="match-tail">${r.substring(baseNode.word.length)}</span></span> <span class="t">${findResult[r]}</span></span>`))]
-                    }
-                });
+                }
 
-                if (domArray.length) {
-                    result.innerHTML = domArray.join('')
+                if (Object.keys(dataResult).length) {
+                    result.innerHTML = Object.keys(dataResult).slice(0, MAX_LEN).map(r =>
+                        `<div class="hint"><span class="addNew learnOpt">+</span><span class="w"><span class="match">${r.substring(0, value.length)}</span><span class="match-tail">${r.substring(value.length)}</span></span> <span class="t">${dataResult[r]}</span></span>`)
                 } else {
                     if (caseSensitive) {
                         this.search(false)
